@@ -570,10 +570,10 @@ const router = express.Router();
  *         description: Server error
  */
 
-router.use(protect);
+// router.use(protect);
 router
   .route("/")
-  .get(authorize("admin"), getUsers)
+  .get( getUsers)
   .post(
     authorize("admin"),
     upload.single("image"),

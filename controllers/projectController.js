@@ -109,9 +109,10 @@ const getProjects = async (req, res) => {
 
     // Execute query with pagination and sorting
     const projects = await Project.find(query)
-      .populate("client", "name email")
-      .populate("projectManager", "name email")
-      .populate("stockManager", "name email")
+      .populate("client", "name email role")
+      .populate("projectManager", "name email role")
+      .populate("stockManager", "name email role")
+      .populate('tasks')
       .populate({
         path: "products.product",
         select: "name reference category price",
@@ -155,7 +156,7 @@ const createProject = async (req, res) => {
       entreprise,
       description,
       beginDate,
-      endDate,
+      endDate,  
       status,
       client,
       projectManager,

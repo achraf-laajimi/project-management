@@ -62,7 +62,10 @@ const httpServer = createServer(app);
 // Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Your frontend URL
+    origin: [
+      process.env.FRONTEND_URL || "http://localhost:5173",
+      "http://10.0.2.2:5000", // Android emulator
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
